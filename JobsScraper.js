@@ -40,7 +40,7 @@ async function scrapeKeyword(){
 
 async function scrapePage(){
     await page.waitForXPath(nextButtonXP, {timeout: 10000});
-    await sleep(5000)
+    await sleep(3000)
     let nextBtnElem = (await page.$x(nextButtonXP))[0];
     let nextBtnDisabled = await page.$x(nextButtonDisabledXP);
     if(nextBtnDisabled.length) 
