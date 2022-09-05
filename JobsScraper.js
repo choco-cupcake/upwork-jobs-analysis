@@ -17,8 +17,9 @@ main()
 async function main(){
     await setupMongoDB()
     await puppeteerBoot()
+    await page.goto("https://www.upwork.com")
+    await sleep(90000) // turned out login is needed to unlock proposalsTier data, one run job not worth coding
     await setRequestInterceptor()
-
     for(let keyword of keywords){
         _keyword = keyword
         await createDbCollection()
@@ -31,6 +32,7 @@ async function createDbCollection(){
         await mongoDB.db(mongo_dbName).createCollection(_keyword)
     } catch(e) {}
 }
+
 async function scrapeKeyword(){
     let url = "https://www.upwork.com/nx/jobs/search/?q=" + _keyword + "&sort=recency"
     await page.goto(url)
@@ -40,7 +42,7 @@ async function scrapeKeyword(){
 
 async function scrapePage(){
     await page.waitForXPath(nextButtonXP, {timeout: 10000});
-    await sleep(3000)
+    await sleep(1500 + Math.floor(Math.random() * 5000))
     let nextBtnElem = (await page.$x(nextButtonXP))[0];
     let nextBtnDisabled = await page.$x(nextButtonDisabledXP);
     if(nextBtnDisabled.length) 
@@ -50,6 +52,9 @@ async function scrapePage(){
 }
 
 async function parseJobs(jobs){
+    for(let job of jobs){
+        console.log("proposalsTier:" + job.proposalsTier)
+    }
     await mongoDB.db(mongo_dbName).collection(_keyword).insertMany(jobs)
 }
 
