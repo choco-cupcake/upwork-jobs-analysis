@@ -6,7 +6,7 @@ The goal of the research is to gain general insights, and also to look into spec
 <br><br>
 Analyzing the jobs demand should be enough by itself, as a strong assumption is that whoever posted a custom job request, could not find a satisfying templated project offer. Anyway, also projects offers will be analyzed, and data from both the streams will be crossed to gather the most information. 
 
-## Usage:
+## Process
 JobScraper.js will iteratively search a list of keywords input_keywords on upwork.com, crawling all job listings. Data is stored on a cloud mongo database. 
 
 KeywordsAnalyzer.js performs the analysis and prints the results. 
