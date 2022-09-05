@@ -6,7 +6,7 @@ let mongoDB
 let mongo_dbName = 'UpworkJobsAnalysis'
 let excludedKeywords 
 const searchKeywords = ['solidity', 'ethereum', 'blockchain', 'evm', 'smart contract', 'nft', 'defi', 'web3']
-const filterKeywords = ['ethereum', 'frontend', 'web3', 'mev', 'backend', 'database', 'evm', 'smart contract', 'full stack', 'full-stack', 'audit', 'solidity', 'nft', 'blockchain', 'python', 'solana', 'rust', 'golang', 'bitcoin']
+const filterKeywords = ['javascript', 'ethereum', 'frontend', 'web3', 'mev', 'backend', 'database', 'evm', 'smart contract', 'full stack', 'full-stack', 'audit', 'solidity', 'nft', 'blockchain', 'python', 'solana', 'rust', 'golang', 'bitcoin']
 const settings = {
     filterJobSearch: 'all', // db-collection-name or 'all' to consider all results at once
     analyzePrices: true,
